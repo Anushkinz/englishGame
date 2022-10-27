@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.block1 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    border-radius: 50%;
+    background-image: url(./icons8-волейбол-96.png);
+  }
+ 
+body{
+    background-color: antiquewhite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hide{
+    display: none;
+}
+#start{
+    padding: 10px 25px;
+    background-color: transparent;
+    border: 3px solid aquamarine;
+    border-radius: 20px;
+    font-size: 30px;
+}
+.block2{
+    width: 150px;
+    height: 150px;
+    background-image: url(./icons8-кофейный-столик-64.png);
+    position: absolute;
+    right: 100px;
+    top: 40%;
+    background-size: cover;
+    z-index: 1;
+}

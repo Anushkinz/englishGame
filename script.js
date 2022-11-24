@@ -3,6 +3,8 @@ let $start = document.querySelector('#start')
 let $startFrame = document.querySelector('.start')
 let $game = document.querySelector('.game')
 let $table = document.querySelector('#table')
+let $table1 = document.querySelector('#table1')
+let $table2 = document.querySelector('#table2')
 let $circle = document.querySelector("#circle")
 let level = 0
 var listener = function(e) {
@@ -35,6 +37,18 @@ $start.addEventListener('click', function(){
 function levels(level){
     $circle.style.top = 0
     $circle.style.left = 0
-    $table.style.backgroundImage = `url(./table${level}.png)`
-    $circle.style.backgroundImage = `url(./ball${level}.png)`
+    if (level <= 3){
+        $table.style.backgroundImage = `url(./table${level}.png)`
+        $circle.style.backgroundImage = `url(./ball${level}.png)`
+    }else{
+        level-=3
+        $table1.classList.remove('hide')
+        $table2.classList.remove('hide')
+        $table1.style.backgroundImage = `url(./table2.png)`
+        $table1.style.right = "50%"
+        $table2.style.right = "80%"
+        $table2.style.backgroundImage = `url(./table3.png)`
+        $table.style.backgroundImage = `url(./table1.png)`
+        $circle.style.backgroundImage = `url(./ball${level}.png)`
+    }
 }

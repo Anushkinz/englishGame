@@ -13,7 +13,7 @@
     left: 0px;
     top: 0px;
     z-index: 2;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     background-image: url(./icons8-волейбол-96.png);
   }
  
@@ -24,12 +24,15 @@ body{
 .hide{
     display: none !important;
 }
-#start{
-    width: 200px;
-    padding: 10px 25px;
+button{
     background-color: transparent;
     border: 3px solid black;
     border-radius: 20px;
+    padding: 2px 25px;
+}
+#start{
+    width: 200px;
+    padding: 10px 25px;
     font-size: 30px;
 }
 .block2{
@@ -110,4 +113,25 @@ header{
 .description p {
     text-align: center;
     font-size: 1.5em;
+}
+#mainPage img{
+    width: 50px;
+    cursor: pointer;
+}
+#mainPage{
+    background-color: transparent;
+    border: none;
+}
+.won{
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    background-color: rgb(222, 255, 187);
+    border-radius: 20px;
+    position: absolute;
+    top: 40%;
+    left: 43%;
+}
+.won h1{
+    margin-bottom: 10px;
 }

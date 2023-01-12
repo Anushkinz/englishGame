@@ -5,8 +5,9 @@ let $startFrame = document.querySelector('.start')
 let $part1 = document.querySelector('.part1')
 let $game = document.querySelector('.game')
 let $table = document.querySelector('#table')
-// let $table1 = document.querySelector('#table1')
-// let $table2 = document.querySelector('#table2')
+let $won = document.querySelector('.won')
+let $resetBtn = document.querySelector('.reset')
+let $nextBtn = document.querySelector('.next')
 let $circle = document.querySelector("#circle")
 let $tasks = document.querySelector('.tasks');
 let $task = document.querySelectorAll('.task')
@@ -28,7 +29,7 @@ function showTask(id){
 
 var listener = function(e) {
   div.style.left = e.pageX - 50 + "px";
-  div.style.top = e.pageY - 130 + "px";
+  div.style.top = e.pageY - 170 + "px";
 };
 
 circle.addEventListener('mousedown', e => {
@@ -42,12 +43,29 @@ circle.addEventListener('mouseup', e => {
     let tablex = $table.getBoundingClientRect().x
     let tabley = $table.getBoundingClientRect().y
     if (Math.abs(divx-tablex)<=80   && Math.abs(divy-tabley) <= 50){
-       alert("you won")
        audio = new Audio(`audio/great.mp3`);
-        level++
-        levels(level)
+       audio.play()
+        won()
     }
 });
+
+function won(){
+    $won.classList.remove('hide')
+    $game.style.pointerEvents = 'none'
+}
+
+$resetBtn.addEventListener('click', function(){
+    $won.classList.add('hide')
+    levels(level)
+    $game.style.pointerEvents = 'auto'
+})
+
+$nextBtn.addEventListener('click', function(){
+    $won.classList.add('hide')
+    level++
+    levels(level)
+    $game.style.pointerEvents = 'auto'
+})
 
 $start.addEventListener('click', function(){
     audio.play();
@@ -64,27 +82,44 @@ function levels(level){
     $circle.style.top = 0
     $circle.style.left = 0
     let color = ""
+    let icon = ""
     switch (level) {
-        case 0:
-            color = ""
-            break
         case 1:
-            color = "red"
+            icon = "ball"
             break
         case 2:
-            color = "green"
+            icon = "pen"
             break
         case 3:
-            color = "blue"
+            icon = "book"
             break
         case 4:
+            // icon = "pen"
             color = "red"
             break
         case 5:
-            color = "red"
+            color = "green"
+            break
+        case 6:
+            color = "blue"
             break
     }
-    if (level <= 3){
+     if (level <= 3){
+        $description.innerHTML = ""
+        $description.insertAdjacentHTML('beforeend', `
+            <div>
+                <img src="./icon/${icon}.png">
+                ---- ${icon}
+            </div>
+             <div>
+                <img src="./icon/table.png">
+                ---- table
+            </div>
+            <p>put ${icon} on the table</p>
+        `)
+        $circle.style.backgroundImage = `url(./icon/${icon}.png)`
+        $table.style.backgroundImage = `url(./icon/table.png)`
+    }else if (level>3 && level <= 6){
         console.log(level)
         console.log(color)
         audio = new Audio(`audio/${color}ball-${color}table.mp3`);

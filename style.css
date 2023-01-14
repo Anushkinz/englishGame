@@ -5,7 +5,7 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-.block1 {
+.block1, .block3, .block4 {
     width: 100px;
     height: 100px;
     position: absolute;
@@ -15,6 +15,13 @@
     z-index: 2;
     /* border-radius: 50%; */
     background-image: url(./icons8-волейбол-96.png);
+  }
+
+  .block3{
+    top: 200px;
+  }
+  .block4{
+    top: 400px;
   }
  
 body{
